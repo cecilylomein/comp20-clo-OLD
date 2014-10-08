@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Daydream Believer</title>
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+<h1 id="title">Daydream Believer</h1>
+
+<video src="http://www.cs.tufts.edu/comp/20/daydream_believer.webm" id="music_video" controls></video>
+<div id="lyrics"></div>
+
+<script type = "text/javascript">
+	// Complete this section and create a CSS file named style.css
+	var v = document.getElementById("music_video");
+	v.addEventListener("timeupdate", showLyrics);
+
+	function showLyrics() {
+		if (v.currentTime >= 6 && v.currentTime < 10) {
+			document.getElementById("lyrics").innerHTML = "Oh, I could hide 'neath the wings";
+		}
+
+		else if (v.currentTime >= 10 && v.currentTime < 14) {
+			document.getElementById("lyrics").innerHTML = "Of the bluebird as she sings";
+		}
+
+		else if (v.currentTime >= 15 && v.currentTime < 21) {
+			document.getElementById("lyrics").innerHTML = "The six o'clock alarm would never ring.";
+		}
+
+		else if (v.currentTime >= 22 && v.currentTime < 26) {
+			document.getElementById("lyrics").innerHTML = "But it rings and I rise,";
+		}
+
+		else if (v.currentTime >= 26 && v.currentTime < 30) {
+			document.getElementById("lyrics").innerHTML = "Wipe the sleep out of my eyes.";
+		}
+
+		else if (v.currentTime >= 30 && v.currentTime < 36) {
+			document.getElementById("lyrics").innerHTML = "My shavin' razor's cold and it stings.";
+		}
+
+		else if (v.currentTime >= 38 && v.currentTime < 42) {
+			document.getElementById("lyrics").innerHTML = "Cheer up, Sleepy Jean."
+		}
+
+		else if (v.currentTime >= 42 && v.currentTime < 45) {
+			document.getElementById("lyrics").innerHTML = "Oh, what can it mean";
+		}
+
+		else if (v.currentTime >= 45 && v.currentTime < 48) {
+			document.getElementById("lyrics").innerHTML = "To a daydream believer";
+		}
+
+		else if (v.currentTime >= 48 && v.currentTime < 54) {
+			document.getElementById("lyrics").innerHTML = "and a homecoming queen.";
+		}
+
+		else if (v.currentTime >= 55 && v.currentTime < 58) {
+			document.getElementById("lyrics").innerHTML = "You once thought of me";
+		}
+
+		else if (v.currentTime >= 58 && v.currentTime < 62) {
+			document.getElementById("lyrics").innerHTML = "As a white knight on a steed.";
+		}
+
+		else if (v.currentTime >= 63 && v.currentTime < 68) {
+			document.getElementById("lyrics").innerHTML = "Now you know how happy I can be.";
+		}
+
+		else if (v.currentTime >= 69 && v.currentTime < 73) {
+			document.getElementById("lyrics").innerHTML = "Oh, and our good times start and end";
+		}
+
+		else if (v.currentTime >= 73 && v.currentTime < 77) {
+			document.getElementById("lyrics").innerHTML = "Without dollar one to spend";
+		}
+
+		else if (v.currentTime >= 77.5 && v.currentTime < 84) {
+			document.getElementById("lyrics").innerHTML = "But how much, baby, do we really need.";
+		}
+
+		else if (v.currentTime >= 85 && v.currentTime < 89) {
+			document.getElementById("lyrics").innerHTML = "Cheer up, Sleepy Jean";
+		}
+
+		else if (v.currentTime >= 89 && v.currentTime < 95) {
+			document.getElementById("lyrics").innerHTML = "Oh, what can it mean.";
+		}
+/*
+		else if (v.currentTime >= 55 && v.currentTime < 59) {
+			document.getElementById("lyrics").innerHTML = "To a daydream believer";
+		}
+
+		else if (v.currentTime >= 55 && v.currentTime < 59) {
+			document.getElementById("lyrics").innerHTML = "And a homecoming queen";
+		}
+
+		else if (v.currentTime >= 55 && v.currentTime < 59) {
+			document.getElementById("lyrics").innerHTML = "You once thought of me";
+		}
+
+		else if (v.currentTime >= 55 && v.currentTime < 59) {
+			document.getElementById("lyrics").innerHTML = "You once thought of me";
+		}
+
+		else if (v.currentTime >= 55 && v.currentTime < 59) {
+			document.getElementById("lyrics").innerHTML = "You once thought of me";
+		}
+
+*/
+		else {
+			document.getElementById("lyrics").innerHTML = "";
+		}
+	}
+
+</script>
+</body>
+</html>	
