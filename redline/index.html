@@ -20,28 +20,30 @@
 		}
 		google.maps.event.addDomListener(window, 'load', initialize);
 
-		xhr = new XMLHttpRequest();
-		xhr.open("GET", "http://developer.mbta.com/lib/rthr/red.json", true);
-		xhr.onreadystatechange = showTrains;
 
-		function showTrains(){
-			alert("success");
+
+		var xhr = new XMLHttpRequest();
+
+		xhr.onreadystatechange = function() {
+			if (xhr.readyState==4 && xhr.status==200) {
+				alert("success");
+				var jsonResponse = JSON.parse(xhr);
+				for (var i = 0; i < xhr.length; i++) {
+					var latitude = xhr.TripList.Trips[i].Position.Lat;
+					var longitude = xhr.TripList.Trips[i].Position.Long;
+					var marker = new google.maps.Marker({
+						position: (latitude, longitude),
+						map: map
+					});
+				}
+			}
+			else { 
+				alert("failed to load JSON")
+			}
 		}
-/*
 
-		XMLHttpRequest():
+		xhr.open("GET", "http://developer.mbta.com/lib/rthr/red.json", true);		xhr.open("GET", "http://developer.mbta.com/lib/rthr/red.json", true);
 
-Step 1: new XMLHttpRequest()
-	xhr = new XMLHttpRequest();
-
-Step 2: xhr.open("HTTP METHOD", "URL", true);
-
-Step 3: xhr.onreadystatechange = myCallbackFunction;
-
-function myCallbackFunction() {
-	//do something
-}
-*/
 
 	</script>
 </head>
