@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<style type="text/css">
+		html, body, #map-canvas { height: 100%; margin: 0; padding: 0;}
+	</style>
+	<script type="text/javascript"
+		src="http://maps.googleapis.com/maps/api/js?sensor=true&libraries=places"></script>
+	</script>
+	<script type = "text/javascript">
+		function initialize() {
+			var mapOptions = {
+				center: {lat: 42.4183, lng: -71.1067},
+				zoom: 12
+			};
+			var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+		}
+		google.maps.event.addDomListener(window, 'load', initialize);
+
+		xhr = new XMLHttpRequest();
+		xhr.open("GET", "http://developer.mbta.com/lib/rthr/red.json", true);
+		xhr.onreadystatechange = showTrains;
+
+		function showTrains(){
+			alert("success");
+		}
+/*
+
+		XMLHttpRequest():
+
+Step 1: new XMLHttpRequest()
+	xhr = new XMLHttpRequest();
+
+Step 2: xhr.open("HTTP METHOD", "URL", true);
+
+Step 3: xhr.onreadystatechange = myCallbackFunction;
+
+function myCallbackFunction() {
+	//do something
+}
+*/
+
+	</script>
+</head>
+<body>
+	<div id = "map-canvas"></div>
+</body>
+</html>
