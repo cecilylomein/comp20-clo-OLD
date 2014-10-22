@@ -27,10 +27,10 @@
 		xhr.onreadystatechange = function() {
 			if (xhr.readyState==4 && xhr.status==200) {
 				alert("success");
-				var jsonResponse = JSON.parse(xhr);
-				for (var i = 0; i < xhr.length; i++) {
-					var latitude = xhr.TripList.Trips[i].Position.Lat;
-					var longitude = xhr.TripList.Trips[i].Position.Long;
+				var jsonResponse = JSON.parse(xhr.responseText);
+				for (var i = 0; i < jsonResponse.length; i++) {
+					var latitude = jsonResponse.TripList.Trips[i].Position.Lat;
+					var longitude = jsonResponse.TripList.Trips[i].Position.Long;
 					var marker = new google.maps.Marker({
 						position: (latitude, longitude),
 						map: map
@@ -42,7 +42,8 @@
 			}
 		}
 
-		xhr.open("GET", "http://developer.mbta.com/lib/rthr/red.json", true);		xhr.open("GET", "http://developer.mbta.com/lib/rthr/red.json", true);
+		xhr.open("GET", "http://developer.mbta.com/lib/rthr/red.json", true);
+		xhr.send();
 
 
 	</script>
