@@ -90,6 +90,7 @@
 				});
 				marker.setMap(map);
 
+				//make infowindows
 				google.maps.event.addListener(marker, 'click', function() {
 					var infowindow = new google.maps.InfoWindow();
 					infowindow.setContent(this['title']); //fix me
@@ -101,10 +102,11 @@
 				var pathtome = [myloc, location];
 				var polyline = new google.maps.Polyline({
 					path: pathtome,
-					geodesic: true,
+					map: map,
 					strokeColor: '#FF0000',
 					strokeOpacity: 1.0,
-					strokeWeight: 2
+					strokeWeight: 2,
+					visible: true
 				});
 
 			}
