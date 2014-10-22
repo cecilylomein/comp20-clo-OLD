@@ -40,6 +40,7 @@
 				var jsonResponse = JSON.parse(xhr.responseText);
 				getCharacters(jsonResponse);
 				getStudents(jsonResponse);
+				makeTable();
 				
 
 			}
@@ -133,10 +134,28 @@
 
 				var d = R * c;
 
-				distances[distances.length] = d;
+				
 
-				makeTable(cname, d);
+				
+				distances[distances.length] = {name: cname, distance: d};
+				distances.sort(function(a, b){
+					var keyA = a.distance;
+					var keyB = b.distance;
+					if (keyA < keyB) return -1;
+					if (keyA > keyB) return 1;
+					return 0; 
+				});
+				
+				//console.log(distances[distances.length]);
 
+				//makeTable(cname, d);
+				
+				/*distances.sort(function(a,b) {
+					return a-b;
+				});
+				*/
+
+				//console.log(distances);
 
 
 			}
@@ -178,13 +197,16 @@
 			}
 		}
 
-		function makeTable(name, distance) {
-			
-			var num = distance.toFixed(3);
-			dstring = dstring.concat(name + ": " + num.toString() + " miles<br>");
-			document.getElementById('distancetable').innerHTML = dstring;
+		function makeTable() {
+			var current;
+			for (var i = 0; i < distances.length; i++) {
+				current = distances[i];
+				var num = current['distance'].toFixed(3);
+				dstring = dstring.concat(current['name'] + ": " + num.toString() + " miles<br>");
+				document.getElementById('distancetable').innerHTML = dstring;
+				
+			}
 		}
-
 
 
 
