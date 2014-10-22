@@ -1,0 +1,22 @@
+#map-canvas {
+	width: 75%;
+	overflow:hidden;
+	white-space:nowrap;
+}
+
+.distance{
+	position: relative;
+	left: 76%;
+	font-family: garamond;
+}
+
+#distanceheading {
+	top: -99%;
+	font-size: 24;
+}
+
+#distancetable{
+	top: -97%;
+
+}
+
