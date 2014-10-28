@@ -9,7 +9,7 @@
 	  // Most of your work will be done here...
 
 	  	var string = "";
-	  	var date = new Date();
+	  	//var date = new Date();
 	  	var month;
 	  	var day;
 	  	var year;
@@ -17,12 +17,15 @@
 	  	var minute;
 	  	var second;
 	  	var current = "";
+		var prevdata = "";
 
 		$(document).ready(function(){
-
+			//localStorage.clear();
+			reload();
 			$('#msg').bind('keypress', function(e) {
 				if(e.keyCode==13) {
 					//enter is pressed
+					var date = new Date();
 					month = parseInt(date.getMonth()) + 1;
 					day = date.getDate();
 					year = date.getFullYear();
@@ -30,14 +33,34 @@
 					minute = date.getMinutes();
 					second = date.getSeconds();
 					current = month.toString() + "/" + day + "/" + year + " " + hour + ":"+ minute + ":" + second;
-					string = string.concat(current+" - ");
-					string = string.concat($('#msg').val());
-					string = string.concat("<br><br>");
-					document.getElementById("news").innerHTML = string;
+					string = current + " - " + $('#msg').val() + "<br><br>" + string;
+
+					document.getElementById("news").innerHTML = string + prevdata;
+
+					localStorage[localStorage.length] = string;
+
 					$('#msg').val("");
 				}
 			}
  		)});
+
+		function reload() {
+			document.getElementById("news").innerHTML = "";
+			for (key in localStorage) {
+				prevdata =  "<p>" + localStorage[key] + "</p>" + prevdata;
+			}
+			
+			/*()
+			if (localStorage.length == 0) {
+				prevdata = "";
+			} else {
+				prevdata = localStorage[localStorage.length-1];
+			}*/
+			//prevdata = localStorage[localStorage.length-1];
+
+			document.getElementById("news").innerHTML = prevdata;
+			current = prevdata;
+		}
 
 
 
