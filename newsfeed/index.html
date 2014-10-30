@@ -4,6 +4,7 @@
 
 <head>
 	<title>My News Feed</title>
+	<link rel="stylesheet" href="style.css" type="text/css" />
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	<script>
 	  // Most of your work will be done here...
@@ -18,10 +19,12 @@
 	  	var second;
 	  	var current = "";
 		var prevdata = "";
+		var refreshcount;
 
 		$(document).ready(function(){
-			//localStorage.clear();
+			
 			reload();
+
 			$('#msg').bind('keypress', function(e) {
 				if(e.keyCode==13) {
 					//enter is pressed
@@ -37,7 +40,7 @@
 
 					document.getElementById("news").innerHTML = string + prevdata;
 
-					localStorage[localStorage.length] = string;
+					localStorage[refreshcount] = string;
 
 					$('#msg').val("");
 				}
@@ -45,21 +48,28 @@
  		)});
 
 		function reload() {
-			document.getElementById("news").innerHTML = "";
-			for (key in localStorage) {
-				prevdata =  "<p>" + localStorage[key] + "</p>" + prevdata;
+			if (localStorage['r'] == undefined) refreshcount = 0;
+			else refreshcount = localStorage['r'];
+
+			if (localStorage.length==1||localStorage.length==0) {
+				document.getElementById("news").innerHTML = "News...<br><br>";
+			}
+
+			else {
+				for (key in localStorage) {
+					if (key!='r') 
+						prevdata =  localStorage[key] + prevdata;
+				}
+				document.getElementById("news").innerHTML = prevdata;
 			}
 			
-			/*()
-			if (localStorage.length == 0) {
-				prevdata = "";
-			} else {
-				prevdata = localStorage[localStorage.length-1];
-			}*/
-			//prevdata = localStorage[localStorage.length-1];
+			refreshcount++;
+			localStorage['r'] = refreshcount;
+		}
 
-			document.getElementById("news").innerHTML = prevdata;
-			current = prevdata;
+		function refresh() {
+			localStorage.clear();
+			location.reload();
 		}
 
 
@@ -70,7 +80,9 @@
 <body>
 	<h1>My News Feed</h1>
 	<h3>My news update: <input type="text" id="msg" name="msg" size="30" /></h3>
-	<div id="news">News...</div>
+	<div id="news"></div>
+	<button type="button" onclick=refresh()>Refresh localStorage</button>
+
 </body>
 </html>
 
